@@ -29,6 +29,20 @@
         roomsContainer.innerHTML += row
       }
     }
+
+    let getUsers = async () => {
+      let response = await fetch('http://127.0.0.1:8000/api/users/')
+      let users = await response.json()
+
+      for(let i = 0; i < users.length ; i++){
+        let user = users[i]
+        let row = `<div>
+                  <h3>${user.name}</h3>
+                  </div>`
+        roomsContainer.innerHTML += row
+      }
+    }
+    getUsers()
     getRooms()
   </script>
 </html>
